@@ -17,7 +17,9 @@ struct tcb_s {
 	size_t stack_sz;
 	uint16_t id;
 	uint16_t delay;
-	uint16_t priority;
+	uint16_t period;
+	uint16_t deadline;
+// 	uint16_t priority;
 	uint8_t state;
 };
 
