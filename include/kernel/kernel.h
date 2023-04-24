@@ -19,7 +19,7 @@ struct tcb_s {
 	uint16_t delay;
 	uint16_t period;
 	uint16_t deadline;
-// 	uint16_t priority;
+	uint16_t priority;		//Tarefa pode ser de tempo real ou de prioridade. Tarefas de prioridade sempre executam apenas se nao ha nenhuma tarefa de tempo real
 	uint8_t state;
 };
 
