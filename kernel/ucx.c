@@ -69,6 +69,7 @@ uint16_t krnl_schedule(void)
 
 void krnl_dispatcher(void)
 {
+	uint_16 id;
 	if (!setjmp(kcb_p->tcb_p->context)) {
 		krnl_delay_update();
 		krnl_stack_check();
