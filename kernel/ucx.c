@@ -46,6 +46,8 @@ static void krnl_delay_update(void)
 	}
 }
 
+//real time scheduler: percorre lista de tarefas procurando por uma tarefa de tempo real. se não encontrar retorna 0 e 
+//será chamado o escalonador normal para tarefas de best effort.
 
 /* task scheduler and dispatcher */
 
