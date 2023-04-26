@@ -51,9 +51,27 @@ static void krnl_delay_update(void)
 
 /* task scheduler and dispatcher */
 
+uint16_t krnl_schedule_edf(void) //WIP Tarefa tem que estar pronta e ser do tipo tempo real. Entre essas tarefas escolher a EDF
+{
+	if (kcb_p->tcb_p->state == TASK_RUNNING) //tarefa que estava rodando e foi preemptada, mas continua ready. nesse momento nao ha nenhuma running
+		kcb_p->tcb_p->state = TASK_READY;
+	
+	do {
+		do {
+			kcb_p->tcb_p = kcb_p->tcb_p->tcb_next;
+		} while (kcb_p->tcb_p->state != TASK_READY);
+	} while (--kcb_p->tcb_p->priority & 0xff);
+	
+	kcb_p->tcb_p->priority |= (kcb_p->tcb_p->priority >> 8) & 0xff;
+	kcb_p->tcb_p->state = TASK_RUNNING;
+	kcb_p->ctx_switches++;
+	
+	return kcb_p->tcb_p->id;
+}
+
 uint16_t krnl_schedule(void)
 {
-	if (kcb_p->tcb_p->state == TASK_RUNNING)
+	if (kcb_p->tcb_p->state == TASK_RUNNING) //tarefa que estava rodando e foi preemptada, mas continua ready. nesse momento nao ha nenhuma running
 		kcb_p->tcb_p->state = TASK_READY;
 	
 	do {
@@ -71,7 +89,6 @@ uint16_t krnl_schedule(void)
 
 void krnl_dispatcher(void)
 {
-	uint_16 id;
 	if (!setjmp(kcb_p->tcb_p->context)) {
 		krnl_delay_update();
 		krnl_stack_check();
@@ -83,6 +100,58 @@ void krnl_dispatcher(void)
 
 
 /* task management / API */
+
+int32_t ucx_task_add_periodic(void *task, uint16_t stack_size, uint16_t period, uint16_t capacity, uint16_t deadline)
+{
+	struct tcb_s *tcb_last = kcb_p->tcb_p;
+	
+	kcb_p->tcb_p = (struct tcb_s *)malloc(sizeof(struct tcb_s));
+	
+	if (kcb_p->tcb_first == 0)
+		kcb_p->tcb_first = kcb_p->tcb_p;
+
+	if (!kcb_p->tcb_p)
+		return -1;
+		
+	CRITICAL_ENTER();
+	if (tcb_last)
+		tcb_last->tcb_next = kcb_p->tcb_p;
+
+	kcb_p->tcb_p->tcb_next = kcb_p->tcb_first;
+	kcb_p->tcb_p->task = task;
+	kcb_p->tcb_p->delay = 0;
+	kcb_p->tcb_p->period = period;
+	kcb_p->tcb_p->capacity = capacity;
+	kcb_p->tcb_p->deadline = deadline;
+	kcb_p->tcb_p->stack_sz = stack_size;
+	kcb_p->tcb_p->id = kcb_p->id++;
+	kcb_p->tcb_p->state = TASK_STOPPED;
+	kcb_p->tcb_p->priority = TASK_NORMAL_PRIO;
+	kcb_p->tcb_p->stack = malloc(kcb_p->tcb_p->stack_sz);
+	
+	if (!kcb_p->tcb_p->stack) {
+		printf("\n*** HALT - task %d, stack alloc failed\n", kcb_p->tcb_p->id);
+		
+		for (;;);
+	}
+	
+	memset(kcb_p->tcb_p->stack, 0x69, kcb_p->tcb_p->stack_sz);
+	memset(kcb_p->tcb_p->stack, 0x33, 4);
+	memset((kcb_p->tcb_p->stack) + kcb_p->tcb_p->stack_sz - 4, 0x33, 4);
+	
+	_context_init(&kcb_p->tcb_p->context, (size_t)kcb_p->tcb_p->stack,
+		kcb_p->tcb_p->stack_sz, (size_t)task);
+	CRITICAL_LEAVE();
+	
+	printf("task %d: %08x, stack: %08x, size %d\n", kcb_p->tcb_p->id,
+		(uint32_t)kcb_p->tcb_p->task, (uint32_t)kcb_p->tcb_p->stack,
+		kcb_p->tcb_p->stack_sz);
+	
+	kcb_p->tcb_p->state = TASK_READY;
+
+	/* FIXME: return task id */
+	return 0;
+}
 
 int32_t ucx_task_add(void *task, uint16_t stack_size)
 {
@@ -103,6 +172,9 @@ int32_t ucx_task_add(void *task, uint16_t stack_size)
 	kcb_p->tcb_p->tcb_next = kcb_p->tcb_first;
 	kcb_p->tcb_p->task = task;
 	kcb_p->tcb_p->delay = 0;
+	kcb_p->tcb_p->period = 0;
+	kcb_p->tcb_p->capacity = 0;
+	kcb_p->tcb_p->deadline = 0;
 	kcb_p->tcb_p->stack_sz = stack_size;
 	kcb_p->tcb_p->id = kcb_p->id++;
 	kcb_p->tcb_p->state = TASK_STOPPED;
