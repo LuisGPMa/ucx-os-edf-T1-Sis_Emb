@@ -18,6 +18,7 @@ struct tcb_s {
 	uint16_t id;
 	uint16_t delay;
 	uint16_t period;
+	uint16_t capacity;
 	uint16_t deadline;
 	uint16_t priority;		//Tarefa pode ser de tempo real ou de prioridade. Tarefas de prioridade sempre executam apenas se nao ha nenhuma tarefa de tempo real
 	uint8_t state;
@@ -42,6 +43,7 @@ extern struct kcb_s *kcb_p;
 uint16_t krnl_schedule(void);
 void krnl_dispatcher(void);
 
+int32_t ucx_task_add_periodic(void *task, uint16_t stack_size, uint16_t period, uint16_t capacity, uint16_t deadline);
 int32_t ucx_task_add(void *task, uint16_t stack_size);
 void ucx_task_yield();
 void ucx_task_delay(uint16_t ticks);
