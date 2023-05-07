@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "ucx.h": "c",
+        "kernel.h": "c"
+    }
+}

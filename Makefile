@@ -111,6 +111,10 @@ echo: rebuild
 	$(CC) $(CFLAGS) -o $(BUILD_APP_DIR)/echo.o app/echo.c
 	@$(MAKE) --no-print-directory link
 
+edf_test: rebuild
+	$(CC) $(CFLAGS) -o $(BUILD_APP_DIR)/edf_test.o app/edf_test.c
+	@$(MAKE) --no-print-directory link
+
 hello: rebuild
 	$(CC) $(CFLAGS) -o $(BUILD_APP_DIR)/hello.o app/hello.c
 	@$(MAKE) --no-print-directory link

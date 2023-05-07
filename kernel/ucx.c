@@ -10,7 +10,8 @@ struct kcb_s kernel_state = {
 	.tcb_p = 0,
 	.tcb_first = 0,
 	.ctx_switches = 0,
-	.id = 0
+	.id = 0,
+	.cycle_counter = 0
 };
 	
 struct kcb_s *kcb_p = &kernel_state;
@@ -49,53 +50,76 @@ static void krnl_delay_update(void)
 //real time scheduler: percorre lista de tarefas procurando por uma tarefa de tempo real. se não encontrar retorna 0 e 
 //será chamado o escalonador normal para tarefas de best effort.
 
-/* task scheduler and dispatcher */
-
-void decrease_deadline_counter() 
+void show_stats()
 {
-	//decrementa o contador da deadline de todas tarefas real time
 	struct tcb_s *curr_task_p = kcb_p->tcb_first;
-	while(curr_task_p->id != kcb_p->tcb_first->id) {
-		if (curr_task_p->deadline > 0 && curr_task_p->state == TASK_READY) {
-			curr_task_p->deadline_counter--;
+	printf("EXECUTION STATS AT CYCLE %d\n____________________________________________________\n", kcb_p->cycle_counter);
+	do {
+		if (curr_task_p->deadline > 0) {
+			printf("task %d \n\tdeadline misses: %d\n\tperiods executed: %d\n\tjobs executed\n", curr_task_p->id, curr_task_p->deadline_misses, curr_task_p->executed_periods, curr_task_p->executed_jobs);
 		}
 		curr_task_p = curr_task_p->tcb_next;
-	}
+	} while(curr_task_p->id != kcb_p->tcb_first->id);
+	printf("____________________________________________________\n");
+
 }
 
-void decrease_period_counter() 
+/* task scheduler and dispatcher */
+
+void decrease_counters() 
 {
-	//decrementa o contador do periodo de todas tarefas real time, ou reseta ele se terminou
+	kcb_p->cycle_counter++;
+	//decrementa o contador do periodo e deadline de todas tarefas real time, ou reseta os contadores se o periodo terminou
 	struct tcb_s *curr_task_p = kcb_p->tcb_first;
 	do {
-		if (curr_task_p->deadline > 0 && curr_task_p->state == TASK_READY) {
+		if (curr_task_p->deadline > 0) {
+			printf("task %d \n\tdeadline: %d\n\tcapacity: %d\n", curr_task_p->id, curr_task_p->deadline_counter, curr_task_p->capacity_counter);
+			if (curr_task_p->capacity_counter == 0){
+				curr_task_p->state = TASK_STOPPED;
+			}
+			curr_task_p->deadline_counter--;
 			curr_task_p->period_counter--;
 			if (curr_task_p->period_counter == 0) {
+				printf("task %d period ended\n", curr_task_p->id);
 				curr_task_p->period_counter = curr_task_p->period;
 				curr_task_p->deadline_counter = curr_task_p->deadline;
+				//no fim de um periodo, o contador de capacidade contera a qtd de trabalho que não conseguiu ser executado naquele periodo.
+				curr_task_p->deadline_misses += curr_task_p->capacity_counter;
+				curr_task_p->capacity_counter = curr_task_p->capacity;
+				curr_task_p->period_counter++;
+				curr_task_p->state = TASK_READY;
 			}
 		}
 		curr_task_p = curr_task_p->tcb_next;
 	} while(curr_task_p->id != kcb_p->tcb_first->id);
 }
 
-int32_t krnl_schedule_edf(void) //WIP Tarefa tem que estar pronta e ser do tipo tempo real. Entre essas tarefas escolher a EDF
+int32_t krnl_schedule_edf(void)
 {
-	decrease_deadline_counter();
-	decrease_period_counter();
+
 	struct tcb_s *curr_task_p = kcb_p->tcb_first;
 	uint16_t earliest_deadline = curr_task_p->deadline_counter;
 	struct tcb_s *earliest_deadline_task = curr_task_p;
 
-	if (kcb_p->tcb_p->state == TASK_RUNNING) //tarefa que estava rodando e foi preemptada, mas continua ready. nesse momento nao ha nenhuma running
-		kcb_p->tcb_p->state = TASK_READY;
+	if (kcb_p->tcb_p->state == TASK_RUNNING){ //tarefa que estava rodando e foi preemptada. essa task executou um trabalho
+		kcb_p->tcb_p->capacity_counter--;
+		kcb_p->tcb_p->executed_jobs++;
+		if (kcb_p->tcb_p->capacity_counter == 0)
+			kcb_p->tcb_p->state = TASK_STOPPED;
+		else
+			kcb_p->tcb_p->state = TASK_READY;		
+	}
+	decrease_counters();
+	if(kcb_p->cycle_counter%50==0){
+		show_stats();
+	}
 
 	uint16_t realtime_task_found = 0;
-	//escolher a task com o deadline mais proximo, ou -1 se nenhuma task de tempo real for encontrada
+	//escolher a task com o deadline mais proximo, ou retornar -1 se nenhuma task de tempo real for encontrada
 	do {
-		if (curr_task_p->deadline > 0 && curr_task_p->state == TASK_READY) {
+		if (curr_task_p->deadline > 0 && curr_task_p->state == TASK_READY && curr_task_p->capacity_counter > 0) {
 			realtime_task_found = 1;
-			if (curr_task_p->deadline_counter < earliest_deadline) {
+			if (curr_task_p->deadline_counter < earliest_deadline && curr_task_p->capacity_counter > 0) {
 				earliest_deadline = curr_task_p->deadline_counter;
 				earliest_deadline_task = curr_task_p;
 			}
@@ -103,18 +127,23 @@ int32_t krnl_schedule_edf(void) //WIP Tarefa tem que estar pronta e ser do tipo 
 		curr_task_p = curr_task_p->tcb_next;
 	} while (curr_task_p->id != kcb_p->tcb_first->id);
 
+	//decrease_counters();
+
 	if (realtime_task_found) {
-		kcb_p->tcb_p = earliest_deadline_task;
-		kcb_p->tcb_p->state = TASK_RUNNING;
-		kcb_p->ctx_switches++;
-	
+		if(earliest_deadline_task->state==TASK_READY && earliest_deadline_task->capacity_counter>0){
+			printf("scheduled task %d with %d jobs left\n", earliest_deadline_task->id, earliest_deadline_task->capacity_counter);
+			kcb_p->tcb_p = earliest_deadline_task;
+			kcb_p->tcb_p->state = TASK_RUNNING;
+			kcb_p->ctx_switches++;
+		}else{
+			return -1;
+		}
+		//if (kcb_p->tcb_p->capacity_counter > 0)
+		//decrease_counters();
 		return kcb_p->tcb_p->id;
 	} else {
-		return -1
+		return -1;
 	}
-
-	
-	
 }
 
 uint16_t krnl_schedule(void)
@@ -142,6 +171,7 @@ void krnl_dispatcher(void)
 		krnl_stack_check();
 		int32_t real_time_task_id = krnl_schedule_edf();
 		if (real_time_task_id == -1) {
+			printf("no real time task ready\n");
 			krnl_schedule();
 		}
 		_interrupt_tick();
@@ -173,9 +203,13 @@ int32_t ucx_task_add_periodic(void *task, uint16_t stack_size, uint16_t period, 
 	kcb_p->tcb_p->delay = 0;
 	kcb_p->tcb_p->period = period;
 	kcb_p->tcb_p->period_counter = period;
+	kcb_p->tcb_p->executed_periods = 1;
 	kcb_p->tcb_p->capacity = capacity;
+	kcb_p->tcb_p->capacity_counter = capacity;
+	kcb_p->tcb_p->executed_jobs = 0;
 	kcb_p->tcb_p->deadline = deadline;
 	kcb_p->tcb_p->deadline_counter = deadline;
+	kcb_p->tcb_p->deadline_misses = 0;
 	kcb_p->tcb_p->stack_sz = stack_size;
 	kcb_p->tcb_p->id = kcb_p->id++;
 	kcb_p->tcb_p->state = TASK_STOPPED;
@@ -227,9 +261,13 @@ int32_t ucx_task_add(void *task, uint16_t stack_size)
 	kcb_p->tcb_p->delay = 0;
 	kcb_p->tcb_p->period = 0;
 	kcb_p->tcb_p->period_counter = 0;
+	kcb_p->tcb_p->executed_periods = 0;
 	kcb_p->tcb_p->capacity = 0;
+	kcb_p->tcb_p->capacity_counter = 0;
+	kcb_p->tcb_p->executed_jobs = 0;
 	kcb_p->tcb_p->deadline = 0;
 	kcb_p->tcb_p->deadline_counter = 0;
+	kcb_p->tcb_p->deadline_misses = 0;
 	kcb_p->tcb_p->stack_sz = stack_size;
 	kcb_p->tcb_p->id = kcb_p->id++;
 	kcb_p->tcb_p->state = TASK_STOPPED;

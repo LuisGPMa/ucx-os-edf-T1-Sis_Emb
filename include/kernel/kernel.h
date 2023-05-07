@@ -19,9 +19,13 @@ struct tcb_s {
 	uint16_t delay;
 	uint16_t period;
 	uint16_t period_counter;
+	uint16_t executed_periods;
 	uint16_t capacity;
+	uint16_t capacity_counter;
+	uint16_t executed_jobs;
 	uint16_t deadline;
-	uint16_t deadline_counter;
+	int16_t deadline_counter;
+	uint16_t deadline_misses;
 	uint16_t priority;		//Tarefa pode ser de tempo real ou de prioridade. Tarefas de prioridade sempre executam apenas se nao ha nenhuma tarefa de tempo real
 	uint8_t state;
 };
@@ -33,6 +37,7 @@ struct kcb_s {
 	struct tcb_s *tcb_first;
 	volatile uint32_t ctx_switches;
 	uint16_t id;
+	uint32_t cycle_counter;
 };
 
 extern struct kcb_s *kcb_p;

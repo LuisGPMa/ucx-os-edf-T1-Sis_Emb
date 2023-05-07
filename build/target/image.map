@@ -1,0 +1,511 @@
+Archive member included to satisfy reference by file (symbol)
+
+./build/target/libucxos.a(crt0.o)
+                              (_entry)
+./build/target/libucxos.a(interrupt.o)
+                              ./build/target/libucxos.a(crt0.o) (irq_enable)
+./build/target/libucxos.a(libc.o)
+                              ./build/target/libucxos.a(interrupt.o) (ucx_printf)
+./build/target/libucxos.a(main.o)
+                              ./build/target/libucxos.a(crt0.o) (main)
+./build/target/libucxos.a(malloc.o)
+                              ./build/target/libucxos.a(main.o) (ucx_heap_init)
+./build/target/libucxos.a(muldiv.o)
+                              ./build/target/libucxos.a(libc.o) (__mulsi3)
+./build/target/libucxos.a(ucx.o)
+                              ./build/app/edf_test.o (ucx_task_add_periodic)
+./build/target/libucxos.a(dump.o)
+                              ./build/target/libucxos.a(ucx.o) (ucx_hexdump)
+./build/target/libucxos.a(hal.o)
+                              ./build/target/libucxos.a(libc.o) (_putchar)
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 ./build/app/edf_test.o
+ .data          0x0000000000000000        0x0 ./build/app/edf_test.o
+ .bss           0x0000000000000000        0x0 ./build/app/edf_test.o
+ .data          0x0000000000000000        0x0 ./build/target/libucxos.a(crt0.o)
+ .bss           0x0000000000000000        0x0 ./build/target/libucxos.a(crt0.o)
+ .text          0x0000000000000000        0x0 ./build/target/libucxos.a(interrupt.o)
+ .data          0x0000000000000000        0x0 ./build/target/libucxos.a(interrupt.o)
+ .bss           0x0000000000000000        0x0 ./build/target/libucxos.a(interrupt.o)
+ .rodata.exception_handler.str1.4
+                0x0000000000000000       0x2c ./build/target/libucxos.a(interrupt.o)
+ .text.exception_handler
+                0x0000000000000000       0x38 ./build/target/libucxos.a(interrupt.o)
+ .data.adc_vector
+                0x0000000000000000       0x10 ./build/target/libucxos.a(interrupt.o)
+ .data.dac_vector
+                0x0000000000000000       0x10 ./build/target/libucxos.a(interrupt.o)
+ .data.i2c_vector
+                0x0000000000000000       0x10 ./build/target/libucxos.a(interrupt.o)
+ .data.spi_vector
+                0x0000000000000000       0x10 ./build/target/libucxos.a(interrupt.o)
+ .data.uart_vector
+                0x0000000000000000       0x40 ./build/target/libucxos.a(interrupt.o)
+ .text          0x0000000000000000        0x0 ./build/target/libucxos.a(libc.o)
+ .data          0x0000000000000000        0x0 ./build/target/libucxos.a(libc.o)
+ .bss           0x0000000000000000        0x0 ./build/target/libucxos.a(libc.o)
+ .text.ucx_strcpy
+                0x0000000000000000       0x1c ./build/target/libucxos.a(libc.o)
+ .text.ucx_strncpy
+                0x0000000000000000       0x4c ./build/target/libucxos.a(libc.o)
+ .text.ucx_strcat
+                0x0000000000000000       0x4c ./build/target/libucxos.a(libc.o)
+ .text.ucx_strncat
+                0x0000000000000000       0x48 ./build/target/libucxos.a(libc.o)
+ .text.ucx_strcmp
+                0x0000000000000000       0x2c ./build/target/libucxos.a(libc.o)
+ .text.ucx_strncmp
+                0x0000000000000000       0x3c ./build/target/libucxos.a(libc.o)
+ .text.ucx_strstr
+                0x0000000000000000       0x50 ./build/target/libucxos.a(libc.o)
+ .text.ucx_strlen
+                0x0000000000000000       0x28 ./build/target/libucxos.a(libc.o)
+ .text.ucx_strchr
+                0x0000000000000000       0x24 ./build/target/libucxos.a(libc.o)
+ .text.ucx_strpbrk
+                0x0000000000000000       0x44 ./build/target/libucxos.a(libc.o)
+ .text.ucx_strsep
+                0x0000000000000000       0x60 ./build/target/libucxos.a(libc.o)
+ .text.ucx_strtok
+                0x0000000000000000       0x90 ./build/target/libucxos.a(libc.o)
+ .text.ucx_strtol
+                0x0000000000000000      0x120 ./build/target/libucxos.a(libc.o)
+ .text.ucx_memcpy
+                0x0000000000000000       0x24 ./build/target/libucxos.a(libc.o)
+ .text.ucx_memmove
+                0x0000000000000000       0x4c ./build/target/libucxos.a(libc.o)
+ .text.ucx_memcmp
+                0x0000000000000000       0x3c ./build/target/libucxos.a(libc.o)
+ .text.ucx_abs  0x0000000000000000       0x10 ./build/target/libucxos.a(libc.o)
+ .text.ucx_random
+                0x0000000000000000       0x60 ./build/target/libucxos.a(libc.o)
+ .text.ucx_srand
+                0x0000000000000000        0xc ./build/target/libucxos.a(libc.o)
+ .text.ucx_puts
+                0x0000000000000000       0x4c ./build/target/libucxos.a(libc.o)
+ .text.ucx_gets
+                0x0000000000000000       0x64 ./build/target/libucxos.a(libc.o)
+ .text.ucx_getline
+                0x0000000000000000       0x74 ./build/target/libucxos.a(libc.o)
+ .text.ucx_sprintf
+                0x0000000000000000       0x40 ./build/target/libucxos.a(libc.o)
+ .sbss.last.0   0x0000000000000000        0x4 ./build/target/libucxos.a(libc.o)
+ .sdata.rand1   0x0000000000000000        0x4 ./build/target/libucxos.a(libc.o)
+ .text          0x0000000000000000        0x0 ./build/target/libucxos.a(main.o)
+ .data          0x0000000000000000        0x0 ./build/target/libucxos.a(main.o)
+ .bss           0x0000000000000000        0x0 ./build/target/libucxos.a(main.o)
+ .text          0x0000000000000000        0x0 ./build/target/libucxos.a(malloc.o)
+ .data          0x0000000000000000        0x0 ./build/target/libucxos.a(malloc.o)
+ .bss           0x0000000000000000        0x0 ./build/target/libucxos.a(malloc.o)
+ .text.ucx_free
+                0x0000000000000000       0x20 ./build/target/libucxos.a(malloc.o)
+ .text.ucx_calloc
+                0x0000000000000000       0x54 ./build/target/libucxos.a(malloc.o)
+ .text.ucx_realloc
+                0x0000000000000000       0xa4 ./build/target/libucxos.a(malloc.o)
+ .text          0x0000000000000000        0x0 ./build/target/libucxos.a(muldiv.o)
+ .data          0x0000000000000000        0x0 ./build/target/libucxos.a(muldiv.o)
+ .bss           0x0000000000000000        0x0 ./build/target/libucxos.a(muldiv.o)
+ .text.__mulsi3
+                0x0000000000000000       0x2c ./build/target/libucxos.a(muldiv.o)
+ .text.__muldsi3
+                0x0000000000000000       0xac ./build/target/libucxos.a(muldiv.o)
+ .text.__muldi3
+                0x0000000000000000      0x128 ./build/target/libucxos.a(muldiv.o)
+ .text.__udivmodsi4
+                0x0000000000000000       0x60 ./build/target/libucxos.a(muldiv.o)
+ .text.__divsi3
+                0x0000000000000000       0x94 ./build/target/libucxos.a(muldiv.o)
+ .text.__modsi3
+                0x0000000000000000       0x94 ./build/target/libucxos.a(muldiv.o)
+ .text.__ashldi3
+                0x0000000000000000       0x38 ./build/target/libucxos.a(muldiv.o)
+ .text.__ashrdi3
+                0x0000000000000000       0x38 ./build/target/libucxos.a(muldiv.o)
+ .text.__lshrdi3
+                0x0000000000000000       0x38 ./build/target/libucxos.a(muldiv.o)
+ .text.__udivmoddi4
+                0x0000000000000000      0x198 ./build/target/libucxos.a(muldiv.o)
+ .text.__umoddi3
+                0x0000000000000000       0xfc ./build/target/libucxos.a(muldiv.o)
+ .text.__udivdi3
+                0x0000000000000000      0x16c ./build/target/libucxos.a(muldiv.o)
+ .text.__moddi3
+                0x0000000000000000      0x138 ./build/target/libucxos.a(muldiv.o)
+ .text.__divdi3
+                0x0000000000000000      0x1dc ./build/target/libucxos.a(muldiv.o)
+ .text          0x0000000000000000        0x0 ./build/target/libucxos.a(ucx.o)
+ .data          0x0000000000000000        0x0 ./build/target/libucxos.a(ucx.o)
+ .bss           0x0000000000000000        0x0 ./build/target/libucxos.a(ucx.o)
+ .text.ucx_task_yield
+                0x0000000000000000       0x70 ./build/target/libucxos.a(ucx.o)
+ .text.ucx_task_delay
+                0x0000000000000000       0x4c ./build/target/libucxos.a(ucx.o)
+ .text.ucx_task_suspend
+                0x0000000000000000       0xcc ./build/target/libucxos.a(ucx.o)
+ .text.ucx_task_resume
+                0x0000000000000000       0xc4 ./build/target/libucxos.a(ucx.o)
+ .text.ucx_task_priority
+                0x0000000000000000       0xbc ./build/target/libucxos.a(ucx.o)
+ .text.ucx_task_id
+                0x0000000000000000       0x14 ./build/target/libucxos.a(ucx.o)
+ .text.ucx_task_wfi
+                0x0000000000000000       0x28 ./build/target/libucxos.a(ucx.o)
+ .text.ucx_task_count
+                0x0000000000000000       0x1c ./build/target/libucxos.a(ucx.o)
+ .text          0x0000000000000000        0x0 ./build/target/libucxos.a(dump.o)
+ .data          0x0000000000000000        0x0 ./build/target/libucxos.a(dump.o)
+ .bss           0x0000000000000000        0x0 ./build/target/libucxos.a(dump.o)
+ .text.ucx_printhex
+                0x0000000000000000       0x60 ./build/target/libucxos.a(dump.o)
+ .text          0x0000000000000000        0x0 ./build/target/libucxos.a(hal.o)
+ .data          0x0000000000000000        0x0 ./build/target/libucxos.a(hal.o)
+ .bss           0x0000000000000000        0x0 ./build/target/libucxos.a(hal.o)
+ .text._kbhit   0x0000000000000000       0x10 ./build/target/libucxos.a(hal.o)
+ .text._getchar
+                0x0000000000000000       0x1c ./build/target/libucxos.a(hal.o)
+ .text._delay_ms
+                0x0000000000000000      0x110 ./build/target/libucxos.a(hal.o)
+ .text._delay_us
+                0x0000000000000000      0x10c ./build/target/libucxos.a(hal.o)
+ .text._read_us
+                0x0000000000000000       0x74 ./build/target/libucxos.a(hal.o)
+ .sbss.tref.2   0x0000000000000000        0x4 ./build/target/libucxos.a(hal.o)
+ .sbss.tval2.1  0x0000000000000000        0x4 ./build/target/libucxos.a(hal.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x0000000040000000 0x0000000000008000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x0000000000000800                _stack_size = 0x800
+                0x0000000040008000                _stack = _stack_start
+                0x0000000040008000                _stack_start = (ORIGIN (RAM) + LENGTH (RAM))
+                0x0000000040007800                _stack_end = (_stack_start - _stack_size)
+                0x0000000040001b9c                _heap_start = _ebss
+                0x0000000040007800                _heap_end = _stack_end
+                0x0000000000005c64                _heap_size = (_stack_end - _ebss)
+                0x0000000000000000                . = 0x0
+
+.text
+ *(.text.init)
+
+.text           0x0000000040000000     0x173c
+                0x0000000040000000                _text = .
+ *(.text)
+ .text          0x0000000040000000      0x224 ./build/target/libucxos.a(crt0.o)
+                0x0000000040000000                _entry
+                0x00000000400000e0                _bootsignature
+                0x0000000040000100                _isr
+                0x0000000040000198                _interrupt_set
+                0x00000000400001b0                setjmp
+                0x00000000400001d0                longjmp
+                0x00000000400001f0                _dispatch_init
+                0x000000004000021c                syscall
+ *(.text.*)
+ .text.task0_periodic
+                0x0000000040000224        0x4 ./build/app/edf_test.o
+                0x0000000040000224                task0_periodic
+ .text.task1_periodic
+                0x0000000040000228        0x4 ./build/app/edf_test.o
+                0x0000000040000228                task1_periodic
+ .text.task2_periodic
+                0x000000004000022c        0x4 ./build/app/edf_test.o
+                0x000000004000022c                task2_periodic
+ .text.task_be  0x0000000040000230        0x4 ./build/app/edf_test.o
+                0x0000000040000230                task_be
+ .text.app_main
+                0x0000000040000234       0x88 ./build/app/edf_test.o
+                0x0000000040000234                app_main
+ .text.dummy_handler
+                0x00000000400002bc        0xc ./build/target/libucxos.a(interrupt.o)
+                0x00000000400002bc                timer0a_handler
+                0x00000000400002bc                irq4_handler
+                0x00000000400002bc                spi0_handler
+                0x00000000400002bc                uart7tx_handler
+                0x00000000400002bc                uart6tx_handler
+                0x00000000400002bc                irq2_handler
+                0x00000000400002bc                adc2_handler
+                0x00000000400002bc                timer4ocr_handler
+                0x00000000400002bc                irq7_handler
+                0x00000000400002bc                timer3ocr_handler
+                0x00000000400002bc                timer7ctc_handler
+                0x00000000400002bc                uart7rx_handler
+                0x00000000400002bc                uart4tx_handler
+                0x00000000400002bc                uart2rx_handler
+                0x00000000400002bc                porta_handler
+                0x00000000400002bc                uart3rx_handler
+                0x00000000400002bc                portd_handler
+                0x00000000400002bc                uart2tx_handler
+                0x00000000400002bc                uart3tx_handler
+                0x00000000400002bc                portc_handler
+                0x00000000400002bc                uart0rx_handler
+                0x00000000400002bc                dummy_handler
+                0x00000000400002bc                irq3_handler
+                0x00000000400002bc                adc3_handler
+                0x00000000400002bc                timer6ctc_handler
+                0x00000000400002bc                irq1_handler
+                0x00000000400002bc                adc1_handler
+                0x00000000400002bc                i2c1_handler
+                0x00000000400002bc                spi2_handler
+                0x00000000400002bc                irq6_handler
+                0x00000000400002bc                timer4ctc_handler
+                0x00000000400002bc                dac2_handler
+                0x00000000400002bc                timer5ctc_handler
+                0x00000000400002bc                uart0tx_handler
+                0x00000000400002bc                portb_handler
+                0x00000000400002bc                dac0_handler
+                0x00000000400002bc                uart5tx_handler
+                0x00000000400002bc                spi1_handler
+                0x00000000400002bc                uart1tx_handler
+                0x00000000400002bc                i2c0_handler
+                0x00000000400002bc                spi3_handler
+                0x00000000400002bc                dac1_handler
+                0x00000000400002bc                uart1rx_handler
+                0x00000000400002bc                timer6ocr_handler
+                0x00000000400002bc                uart6rx_handler
+                0x00000000400002bc                uart5rx_handler
+                0x00000000400002bc                timer2ocr_handler
+                0x00000000400002bc                timer2ctc_handler
+                0x00000000400002bc                timer7ocr_handler
+                0x00000000400002bc                timer5ocr_handler
+                0x00000000400002bc                adc0_handler
+                0x00000000400002bc                timer3ctc_handler
+                0x00000000400002bc                timer1ctc_handler
+                0x00000000400002bc                i2c2_handler
+                0x00000000400002bc                dac3_handler
+                0x00000000400002bc                i2c3_handler
+                0x00000000400002bc                timer1ocr_handler
+                0x00000000400002bc                uart4rx_handler
+                0x00000000400002bc                irq5_handler
+ .text.irq0_handler
+                0x00000000400002c8      0x224 ./build/target/libucxos.a(interrupt.o)
+                0x00000000400002c8                irq0_handler
+ .text.irq_enable
+                0x00000000400004ec       0x14 ./build/target/libucxos.a(interrupt.o)
+                0x00000000400004ec                irq_enable
+ .text.irq_handler
+                0x0000000040000500       0x50 ./build/target/libucxos.a(interrupt.o)
+                0x0000000040000500                irq_handler
+ .text.ucx_vsprintf
+                0x0000000040000550      0x4c4 ./build/target/libucxos.a(libc.o)
+ .text.ucx_memset
+                0x0000000040000a14       0x20 ./build/target/libucxos.a(libc.o)
+                0x0000000040000a14                ucx_memset
+ .text.ucx_printf
+                0x0000000040000a34       0x40 ./build/target/libucxos.a(libc.o)
+                0x0000000040000a34                ucx_printf
+ .text.startup.main
+                0x0000000040000a74       0xa4 ./build/target/libucxos.a(main.o)
+                0x0000000040000a74                main
+ .text.ucx_malloc
+                0x0000000040000b18       0xc0 ./build/target/libucxos.a(malloc.o)
+                0x0000000040000b18                ucx_malloc
+ .text.ucx_heap_init
+                0x0000000040000bd8       0x38 ./build/target/libucxos.a(malloc.o)
+                0x0000000040000bd8                ucx_heap_init
+ .text.__udivsi3
+                0x0000000040000c10       0x48 ./build/target/libucxos.a(muldiv.o)
+                0x0000000040000c10                __udivsi3
+ .text.__umodsi3
+                0x0000000040000c58       0x40 ./build/target/libucxos.a(muldiv.o)
+                0x0000000040000c58                __umodsi3
+ .text.krnl_delay_update
+                0x0000000040000c98       0x58 ./build/target/libucxos.a(ucx.o)
+ .text.krnl_stack_check
+                0x0000000040000cf0       0x6c ./build/target/libucxos.a(ucx.o)
+ .text.show_stats
+                0x0000000040000d5c       0xa4 ./build/target/libucxos.a(ucx.o)
+                0x0000000040000d5c                show_stats
+ .text.decrease_counters
+                0x0000000040000e00      0x108 ./build/target/libucxos.a(ucx.o)
+                0x0000000040000e00                decrease_counters
+ .text.krnl_schedule_edf
+                0x0000000040000f08      0x168 ./build/target/libucxos.a(ucx.o)
+                0x0000000040000f08                krnl_schedule_edf
+ .text.krnl_schedule
+                0x0000000040001070       0x84 ./build/target/libucxos.a(ucx.o)
+                0x0000000040001070                krnl_schedule
+ .text.krnl_dispatcher
+                0x00000000400010f4       0x78 ./build/target/libucxos.a(ucx.o)
+                0x00000000400010f4                krnl_dispatcher
+ .text.ucx_task_add_periodic
+                0x000000004000116c      0x1f8 ./build/target/libucxos.a(ucx.o)
+                0x000000004000116c                ucx_task_add_periodic
+ .text.ucx_task_add
+                0x0000000040001364      0x1cc ./build/target/libucxos.a(ucx.o)
+                0x0000000040001364                ucx_task_add
+ .text.ucx_hexdump
+                0x0000000040001530      0x170 ./build/target/libucxos.a(dump.o)
+                0x0000000040001530                ucx_hexdump
+ .text._putchar
+                0x00000000400016a0       0x1c ./build/target/libucxos.a(hal.o)
+                0x00000000400016a0                _putchar
+ .text.timer0b_handler
+                0x00000000400016bc        0x4 ./build/target/libucxos.a(hal.o)
+                0x00000000400016bc                timer0b_handler
+ .text._hardware_init
+                0x00000000400016c0       0x3c ./build/target/libucxos.a(hal.o)
+                0x00000000400016c0                _hardware_init
+ .text._timer_enable
+                0x00000000400016fc       0x14 ./build/target/libucxos.a(hal.o)
+                0x00000000400016fc                _timer_enable
+ .text._timer_disable
+                0x0000000040001710       0x14 ./build/target/libucxos.a(hal.o)
+                0x0000000040001710                _timer_disable
+ .text._interrupt_tick
+                0x0000000040001724        0x8 ./build/target/libucxos.a(hal.o)
+                0x0000000040001724                _interrupt_tick
+ .text._context_init
+                0x000000004000172c       0x10 ./build/target/libucxos.a(hal.o)
+                0x000000004000172c                _context_init
+                0x000000004000173c                _etext = .
+
+.rela.dyn       0x000000004000173c        0x0
+ .rela.text     0x000000004000173c        0x0 ./build/app/edf_test.o
+ .rela.data.gpio_vector
+                0x000000004000173c        0x0 ./build/app/edf_test.o
+ .rela.data.irq_vector
+                0x000000004000173c        0x0 ./build/app/edf_test.o
+ .rela.data.timer_vector
+                0x000000004000173c        0x0 ./build/app/edf_test.o
+ .rela.text.startup.main
+                0x000000004000173c        0x0 ./build/app/edf_test.o
+
+.data           0x000000004000173c      0x3f4
+                0x000000004000173c                _rodata = .
+ *(.rdata)
+ *(.rodata)
+ *(.rodata.*)
+ .rodata.dummy_handler.str1.4
+                0x000000004000173c        0x5 ./build/target/libucxos.a(interrupt.o)
+ *fill*         0x0000000040001741        0x3 
+ .rodata.irq0_handler.str1.4
+                0x0000000040001744       0x25 ./build/target/libucxos.a(interrupt.o)
+ *fill*         0x0000000040001769        0x3 
+ .rodata.irq0_handler
+                0x000000004000176c       0x84 ./build/target/libucxos.a(interrupt.o)
+ .rodata.ucx_vsprintf.str1.4
+                0x00000000400017f0       0x19 ./build/target/libucxos.a(libc.o)
+ *fill*         0x0000000040001809        0x3 
+ .rodata.ucx_vsprintf
+                0x000000004000180c       0x84 ./build/target/libucxos.a(libc.o)
+ .rodata.main.str1.4
+                0x0000000040001890       0x44 ./build/target/libucxos.a(main.o)
+ .rodata.krnl_stack_check.str1.4
+                0x00000000400018d4       0x33 ./build/target/libucxos.a(ucx.o)
+ *fill*         0x0000000040001907        0x1 
+ .rodata.show_stats.str1.4
+                0x0000000040001908       0xcd ./build/target/libucxos.a(ucx.o)
+ *fill*         0x00000000400019d5        0x3 
+ .rodata.decrease_counters.str1.4
+                0x00000000400019d8       0x3e ./build/target/libucxos.a(ucx.o)
+ *fill*         0x0000000040001a16        0x2 
+ .rodata.krnl_schedule_edf.str1.4
+                0x0000000040001a18       0x25 ./build/target/libucxos.a(ucx.o)
+ *fill*         0x0000000040001a3d        0x3 
+ .rodata.krnl_dispatcher.str1.4
+                0x0000000040001a40       0x19 ./build/target/libucxos.a(ucx.o)
+ *fill*         0x0000000040001a59        0x3 
+ .rodata.ucx_task_add_periodic.str1.4
+                0x0000000040001a5c       0x51 ./build/target/libucxos.a(ucx.o)
+                0x0000000040001aad                _erodata = .
+                0x0000000040001aad                _data = .
+ *(.data)
+ *(.data.*)
+ *fill*         0x0000000040001aad        0x3 
+ .data.gpio_vector
+                0x0000000040001ab0       0x10 ./build/target/libucxos.a(interrupt.o)
+                0x0000000040001ab0                gpio_vector
+ .data.irq_vector
+                0x0000000040001ac0       0x20 ./build/target/libucxos.a(interrupt.o)
+                0x0000000040001ac0                irq_vector
+ .data.timer_vector
+                0x0000000040001ae0       0x40 ./build/target/libucxos.a(interrupt.o)
+                0x0000000040001ae0                timer_vector
+                0x0000000040002320                _gp = (. + 0x800)
+ *(.sdata)
+ *(.sdata.*)
+ .sdata.kcb_p   0x0000000040001b20        0x4 ./build/target/libucxos.a(ucx.o)
+                0x0000000040001b20                kcb_p
+                0x0000000040001b30                . = ALIGN (0x10)
+ *fill*         0x0000000040001b24        0xc 
+                0x0000000040001b30                _edata = .
+
+.bss            0x0000000040001b30       0x6c
+                0x0000000040001b30                . = ALIGN (0x4)
+                0x0000000040001b30                _sbss = .
+ *(.sbss)
+ *(.sbss.*)
+ .sbss.first_free
+                0x0000000040001b30        0x4 ./build/target/libucxos.a(malloc.o)
+                0x0000000040001b30                first_free
+ .sbss.last_free
+                0x0000000040001b34        0x4 ./build/target/libucxos.a(malloc.o)
+                0x0000000040001b34                last_free
+ *(.bss)
+ *(.bss.*)
+ .bss.kernel_state
+                0x0000000040001b38       0x64 ./build/target/libucxos.a(ucx.o)
+                0x0000000040001b38                kernel_state
+                0x0000000040001b9c                . = ALIGN (0x4)
+                0x0000000040001b9c                _ebss = .
+                0x0000000040001b9c                _end = .
+
+.heap           0x0000000040001b9c     0x5c64
+                0x0000000040001b9c                . = ALIGN (0x4)
+                0x0000000040001b9c                _heap_start = .
+                0x0000000040007800                . = (. + _heap_size)
+ *fill*         0x0000000040001b9c     0x5c64 
+                0x0000000040007800                . = ALIGN (0x4)
+
+.stack          0x0000000040007800      0x800
+                0x0000000040007800                . = ALIGN (0x4)
+                0x0000000040007800                _stack_end = .
+                0x0000000040008000                . = (. + _stack_size)
+ *fill*         0x0000000040007800      0x800 
+                0x0000000040008000                _stack_start = .
+                0x0000000040008000                . = ALIGN (0x4)
+LOAD ./build/app/edf_test.o
+LOAD ./build/target/libucxos.a
+OUTPUT(./build/target/image.elf elf32-littleriscv)
+
+.comment        0x0000000000000000       0x12
+ .comment       0x0000000000000000       0x12 ./build/app/edf_test.o
+                                         0x13 (size before relaxing)
+ .comment       0x0000000000000012       0x13 ./build/target/libucxos.a(interrupt.o)
+ .comment       0x0000000000000012       0x13 ./build/target/libucxos.a(libc.o)
+ .comment       0x0000000000000012       0x13 ./build/target/libucxos.a(main.o)
+ .comment       0x0000000000000012       0x13 ./build/target/libucxos.a(malloc.o)
+ .comment       0x0000000000000012       0x13 ./build/target/libucxos.a(muldiv.o)
+ .comment       0x0000000000000012       0x13 ./build/target/libucxos.a(ucx.o)
+ .comment       0x0000000000000012       0x13 ./build/target/libucxos.a(dump.o)
+ .comment       0x0000000000000012       0x13 ./build/target/libucxos.a(hal.o)
+
+.riscv.attributes
+                0x0000000000000000       0x1c
+ .riscv.attributes
+                0x0000000000000000       0x1c ./build/app/edf_test.o
+ .riscv.attributes
+                0x000000000000001c       0x1a ./build/target/libucxos.a(crt0.o)
+ .riscv.attributes
+                0x0000000000000036       0x1c ./build/target/libucxos.a(interrupt.o)
+ .riscv.attributes
+                0x0000000000000052       0x1c ./build/target/libucxos.a(libc.o)
+ .riscv.attributes
+                0x000000000000006e       0x1c ./build/target/libucxos.a(main.o)
+ .riscv.attributes
+                0x000000000000008a       0x1c ./build/target/libucxos.a(malloc.o)
+ .riscv.attributes
+                0x00000000000000a6       0x1c ./build/target/libucxos.a(muldiv.o)
+ .riscv.attributes
+                0x00000000000000c2       0x1c ./build/target/libucxos.a(ucx.o)
+ .riscv.attributes
+                0x00000000000000de       0x1c ./build/target/libucxos.a(dump.o)
+ .riscv.attributes
+                0x00000000000000fa       0x1c ./build/target/libucxos.a(hal.o)
