@@ -3,9 +3,9 @@
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000173c  40000000  40000000  00001000  2**2
+  0 .text         0000177c  40000000  40000000  00001000  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         000003f4  4000173c  4000173c  0000273c  2**2
+  1 .data         000003b4  4000177c  4000177c  0000277c  2**2
                   CONTENTS, ALLOC, LOAD, DATA
   2 .bss          0000006c  40001b30  40001b30  00002b30  2**2
                   ALLOC

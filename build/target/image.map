@@ -195,7 +195,7 @@ Linker script and memory map
 .text
  *(.text.init)
 
-.text           0x0000000040000000     0x173c
+.text           0x0000000040000000     0x177c
                 0x0000000040000000                _text = .
  *(.text)
  .text          0x0000000040000000      0x224 ./build/target/libucxos.a(crt0.o)
@@ -217,224 +217,230 @@ Linker script and memory map
  .text.task2_periodic
                 0x000000004000022c        0x4 ./build/app/edf_test.o
                 0x000000004000022c                task2_periodic
- .text.task_be  0x0000000040000230        0x4 ./build/app/edf_test.o
-                0x0000000040000230                task_be
+ .text.task3_periodic
+                0x0000000040000230        0x4 ./build/app/edf_test.o
+                0x0000000040000230                task3_periodic
+ .text.task4_periodic
+                0x0000000040000234        0x4 ./build/app/edf_test.o
+                0x0000000040000234                task4_periodic
+ .text.task_be  0x0000000040000238        0x4 ./build/app/edf_test.o
+                0x0000000040000238                task_be
  .text.app_main
-                0x0000000040000234       0x88 ./build/app/edf_test.o
-                0x0000000040000234                app_main
+                0x000000004000023c       0xc0 ./build/app/edf_test.o
+                0x000000004000023c                app_main
  .text.dummy_handler
-                0x00000000400002bc        0xc ./build/target/libucxos.a(interrupt.o)
-                0x00000000400002bc                timer0a_handler
-                0x00000000400002bc                irq4_handler
-                0x00000000400002bc                spi0_handler
-                0x00000000400002bc                uart7tx_handler
-                0x00000000400002bc                uart6tx_handler
-                0x00000000400002bc                irq2_handler
-                0x00000000400002bc                adc2_handler
-                0x00000000400002bc                timer4ocr_handler
-                0x00000000400002bc                irq7_handler
-                0x00000000400002bc                timer3ocr_handler
-                0x00000000400002bc                timer7ctc_handler
-                0x00000000400002bc                uart7rx_handler
-                0x00000000400002bc                uart4tx_handler
-                0x00000000400002bc                uart2rx_handler
-                0x00000000400002bc                porta_handler
-                0x00000000400002bc                uart3rx_handler
-                0x00000000400002bc                portd_handler
-                0x00000000400002bc                uart2tx_handler
-                0x00000000400002bc                uart3tx_handler
-                0x00000000400002bc                portc_handler
-                0x00000000400002bc                uart0rx_handler
-                0x00000000400002bc                dummy_handler
-                0x00000000400002bc                irq3_handler
-                0x00000000400002bc                adc3_handler
-                0x00000000400002bc                timer6ctc_handler
-                0x00000000400002bc                irq1_handler
-                0x00000000400002bc                adc1_handler
-                0x00000000400002bc                i2c1_handler
-                0x00000000400002bc                spi2_handler
-                0x00000000400002bc                irq6_handler
-                0x00000000400002bc                timer4ctc_handler
-                0x00000000400002bc                dac2_handler
-                0x00000000400002bc                timer5ctc_handler
-                0x00000000400002bc                uart0tx_handler
-                0x00000000400002bc                portb_handler
-                0x00000000400002bc                dac0_handler
-                0x00000000400002bc                uart5tx_handler
-                0x00000000400002bc                spi1_handler
-                0x00000000400002bc                uart1tx_handler
-                0x00000000400002bc                i2c0_handler
-                0x00000000400002bc                spi3_handler
-                0x00000000400002bc                dac1_handler
-                0x00000000400002bc                uart1rx_handler
-                0x00000000400002bc                timer6ocr_handler
-                0x00000000400002bc                uart6rx_handler
-                0x00000000400002bc                uart5rx_handler
-                0x00000000400002bc                timer2ocr_handler
-                0x00000000400002bc                timer2ctc_handler
-                0x00000000400002bc                timer7ocr_handler
-                0x00000000400002bc                timer5ocr_handler
-                0x00000000400002bc                adc0_handler
-                0x00000000400002bc                timer3ctc_handler
-                0x00000000400002bc                timer1ctc_handler
-                0x00000000400002bc                i2c2_handler
-                0x00000000400002bc                dac3_handler
-                0x00000000400002bc                i2c3_handler
-                0x00000000400002bc                timer1ocr_handler
-                0x00000000400002bc                uart4rx_handler
-                0x00000000400002bc                irq5_handler
+                0x00000000400002fc        0xc ./build/target/libucxos.a(interrupt.o)
+                0x00000000400002fc                timer0a_handler
+                0x00000000400002fc                irq4_handler
+                0x00000000400002fc                spi0_handler
+                0x00000000400002fc                uart7tx_handler
+                0x00000000400002fc                uart6tx_handler
+                0x00000000400002fc                irq2_handler
+                0x00000000400002fc                adc2_handler
+                0x00000000400002fc                timer4ocr_handler
+                0x00000000400002fc                irq7_handler
+                0x00000000400002fc                timer3ocr_handler
+                0x00000000400002fc                timer7ctc_handler
+                0x00000000400002fc                uart7rx_handler
+                0x00000000400002fc                uart4tx_handler
+                0x00000000400002fc                uart2rx_handler
+                0x00000000400002fc                porta_handler
+                0x00000000400002fc                uart3rx_handler
+                0x00000000400002fc                portd_handler
+                0x00000000400002fc                uart2tx_handler
+                0x00000000400002fc                uart3tx_handler
+                0x00000000400002fc                portc_handler
+                0x00000000400002fc                uart0rx_handler
+                0x00000000400002fc                dummy_handler
+                0x00000000400002fc                irq3_handler
+                0x00000000400002fc                adc3_handler
+                0x00000000400002fc                timer6ctc_handler
+                0x00000000400002fc                irq1_handler
+                0x00000000400002fc                adc1_handler
+                0x00000000400002fc                i2c1_handler
+                0x00000000400002fc                spi2_handler
+                0x00000000400002fc                irq6_handler
+                0x00000000400002fc                timer4ctc_handler
+                0x00000000400002fc                dac2_handler
+                0x00000000400002fc                timer5ctc_handler
+                0x00000000400002fc                uart0tx_handler
+                0x00000000400002fc                portb_handler
+                0x00000000400002fc                dac0_handler
+                0x00000000400002fc                uart5tx_handler
+                0x00000000400002fc                spi1_handler
+                0x00000000400002fc                uart1tx_handler
+                0x00000000400002fc                i2c0_handler
+                0x00000000400002fc                spi3_handler
+                0x00000000400002fc                dac1_handler
+                0x00000000400002fc                uart1rx_handler
+                0x00000000400002fc                timer6ocr_handler
+                0x00000000400002fc                uart6rx_handler
+                0x00000000400002fc                uart5rx_handler
+                0x00000000400002fc                timer2ocr_handler
+                0x00000000400002fc                timer2ctc_handler
+                0x00000000400002fc                timer7ocr_handler
+                0x00000000400002fc                timer5ocr_handler
+                0x00000000400002fc                adc0_handler
+                0x00000000400002fc                timer3ctc_handler
+                0x00000000400002fc                timer1ctc_handler
+                0x00000000400002fc                i2c2_handler
+                0x00000000400002fc                dac3_handler
+                0x00000000400002fc                i2c3_handler
+                0x00000000400002fc                timer1ocr_handler
+                0x00000000400002fc                uart4rx_handler
+                0x00000000400002fc                irq5_handler
  .text.irq0_handler
-                0x00000000400002c8      0x224 ./build/target/libucxos.a(interrupt.o)
-                0x00000000400002c8                irq0_handler
+                0x0000000040000308      0x224 ./build/target/libucxos.a(interrupt.o)
+                0x0000000040000308                irq0_handler
  .text.irq_enable
-                0x00000000400004ec       0x14 ./build/target/libucxos.a(interrupt.o)
-                0x00000000400004ec                irq_enable
+                0x000000004000052c       0x14 ./build/target/libucxos.a(interrupt.o)
+                0x000000004000052c                irq_enable
  .text.irq_handler
-                0x0000000040000500       0x50 ./build/target/libucxos.a(interrupt.o)
-                0x0000000040000500                irq_handler
+                0x0000000040000540       0x50 ./build/target/libucxos.a(interrupt.o)
+                0x0000000040000540                irq_handler
  .text.ucx_vsprintf
-                0x0000000040000550      0x4c4 ./build/target/libucxos.a(libc.o)
+                0x0000000040000590      0x4c4 ./build/target/libucxos.a(libc.o)
  .text.ucx_memset
-                0x0000000040000a14       0x20 ./build/target/libucxos.a(libc.o)
-                0x0000000040000a14                ucx_memset
+                0x0000000040000a54       0x20 ./build/target/libucxos.a(libc.o)
+                0x0000000040000a54                ucx_memset
  .text.ucx_printf
-                0x0000000040000a34       0x40 ./build/target/libucxos.a(libc.o)
-                0x0000000040000a34                ucx_printf
+                0x0000000040000a74       0x40 ./build/target/libucxos.a(libc.o)
+                0x0000000040000a74                ucx_printf
  .text.startup.main
-                0x0000000040000a74       0xa4 ./build/target/libucxos.a(main.o)
-                0x0000000040000a74                main
+                0x0000000040000ab4       0xa4 ./build/target/libucxos.a(main.o)
+                0x0000000040000ab4                main
  .text.ucx_malloc
-                0x0000000040000b18       0xc0 ./build/target/libucxos.a(malloc.o)
-                0x0000000040000b18                ucx_malloc
+                0x0000000040000b58       0xc0 ./build/target/libucxos.a(malloc.o)
+                0x0000000040000b58                ucx_malloc
  .text.ucx_heap_init
-                0x0000000040000bd8       0x38 ./build/target/libucxos.a(malloc.o)
-                0x0000000040000bd8                ucx_heap_init
+                0x0000000040000c18       0x38 ./build/target/libucxos.a(malloc.o)
+                0x0000000040000c18                ucx_heap_init
  .text.__udivsi3
-                0x0000000040000c10       0x48 ./build/target/libucxos.a(muldiv.o)
-                0x0000000040000c10                __udivsi3
+                0x0000000040000c50       0x48 ./build/target/libucxos.a(muldiv.o)
+                0x0000000040000c50                __udivsi3
  .text.__umodsi3
-                0x0000000040000c58       0x40 ./build/target/libucxos.a(muldiv.o)
-                0x0000000040000c58                __umodsi3
+                0x0000000040000c98       0x40 ./build/target/libucxos.a(muldiv.o)
+                0x0000000040000c98                __umodsi3
  .text.krnl_delay_update
-                0x0000000040000c98       0x58 ./build/target/libucxos.a(ucx.o)
+                0x0000000040000cd8       0x58 ./build/target/libucxos.a(ucx.o)
  .text.krnl_stack_check
-                0x0000000040000cf0       0x6c ./build/target/libucxos.a(ucx.o)
+                0x0000000040000d30       0x6c ./build/target/libucxos.a(ucx.o)
  .text.show_stats
-                0x0000000040000d5c       0xa4 ./build/target/libucxos.a(ucx.o)
-                0x0000000040000d5c                show_stats
+                0x0000000040000d9c       0xa4 ./build/target/libucxos.a(ucx.o)
+                0x0000000040000d9c                show_stats
  .text.decrease_counters
-                0x0000000040000e00      0x108 ./build/target/libucxos.a(ucx.o)
-                0x0000000040000e00                decrease_counters
+                0x0000000040000e40      0x108 ./build/target/libucxos.a(ucx.o)
+                0x0000000040000e40                decrease_counters
  .text.krnl_schedule_edf
-                0x0000000040000f08      0x168 ./build/target/libucxos.a(ucx.o)
-                0x0000000040000f08                krnl_schedule_edf
+                0x0000000040000f48      0x168 ./build/target/libucxos.a(ucx.o)
+                0x0000000040000f48                krnl_schedule_edf
  .text.krnl_schedule
-                0x0000000040001070       0x84 ./build/target/libucxos.a(ucx.o)
-                0x0000000040001070                krnl_schedule
+                0x00000000400010b0       0x84 ./build/target/libucxos.a(ucx.o)
+                0x00000000400010b0                krnl_schedule
  .text.krnl_dispatcher
-                0x00000000400010f4       0x78 ./build/target/libucxos.a(ucx.o)
-                0x00000000400010f4                krnl_dispatcher
+                0x0000000040001134       0x78 ./build/target/libucxos.a(ucx.o)
+                0x0000000040001134                krnl_dispatcher
  .text.ucx_task_add_periodic
-                0x000000004000116c      0x1f8 ./build/target/libucxos.a(ucx.o)
-                0x000000004000116c                ucx_task_add_periodic
+                0x00000000400011ac      0x1f8 ./build/target/libucxos.a(ucx.o)
+                0x00000000400011ac                ucx_task_add_periodic
  .text.ucx_task_add
-                0x0000000040001364      0x1cc ./build/target/libucxos.a(ucx.o)
-                0x0000000040001364                ucx_task_add
+                0x00000000400013a4      0x1cc ./build/target/libucxos.a(ucx.o)
+                0x00000000400013a4                ucx_task_add
  .text.ucx_hexdump
-                0x0000000040001530      0x170 ./build/target/libucxos.a(dump.o)
-                0x0000000040001530                ucx_hexdump
+                0x0000000040001570      0x170 ./build/target/libucxos.a(dump.o)
+                0x0000000040001570                ucx_hexdump
  .text._putchar
-                0x00000000400016a0       0x1c ./build/target/libucxos.a(hal.o)
-                0x00000000400016a0                _putchar
+                0x00000000400016e0       0x1c ./build/target/libucxos.a(hal.o)
+                0x00000000400016e0                _putchar
  .text.timer0b_handler
-                0x00000000400016bc        0x4 ./build/target/libucxos.a(hal.o)
-                0x00000000400016bc                timer0b_handler
+                0x00000000400016fc        0x4 ./build/target/libucxos.a(hal.o)
+                0x00000000400016fc                timer0b_handler
  .text._hardware_init
-                0x00000000400016c0       0x3c ./build/target/libucxos.a(hal.o)
-                0x00000000400016c0                _hardware_init
+                0x0000000040001700       0x3c ./build/target/libucxos.a(hal.o)
+                0x0000000040001700                _hardware_init
  .text._timer_enable
-                0x00000000400016fc       0x14 ./build/target/libucxos.a(hal.o)
-                0x00000000400016fc                _timer_enable
+                0x000000004000173c       0x14 ./build/target/libucxos.a(hal.o)
+                0x000000004000173c                _timer_enable
  .text._timer_disable
-                0x0000000040001710       0x14 ./build/target/libucxos.a(hal.o)
-                0x0000000040001710                _timer_disable
+                0x0000000040001750       0x14 ./build/target/libucxos.a(hal.o)
+                0x0000000040001750                _timer_disable
  .text._interrupt_tick
-                0x0000000040001724        0x8 ./build/target/libucxos.a(hal.o)
-                0x0000000040001724                _interrupt_tick
+                0x0000000040001764        0x8 ./build/target/libucxos.a(hal.o)
+                0x0000000040001764                _interrupt_tick
  .text._context_init
-                0x000000004000172c       0x10 ./build/target/libucxos.a(hal.o)
-                0x000000004000172c                _context_init
-                0x000000004000173c                _etext = .
+                0x000000004000176c       0x10 ./build/target/libucxos.a(hal.o)
+                0x000000004000176c                _context_init
+                0x000000004000177c                _etext = .
 
-.rela.dyn       0x000000004000173c        0x0
- .rela.text     0x000000004000173c        0x0 ./build/app/edf_test.o
+.rela.dyn       0x000000004000177c        0x0
+ .rela.text     0x000000004000177c        0x0 ./build/app/edf_test.o
  .rela.data.gpio_vector
-                0x000000004000173c        0x0 ./build/app/edf_test.o
+                0x000000004000177c        0x0 ./build/app/edf_test.o
  .rela.data.irq_vector
-                0x000000004000173c        0x0 ./build/app/edf_test.o
+                0x000000004000177c        0x0 ./build/app/edf_test.o
  .rela.data.timer_vector
-                0x000000004000173c        0x0 ./build/app/edf_test.o
+                0x000000004000177c        0x0 ./build/app/edf_test.o
  .rela.text.startup.main
-                0x000000004000173c        0x0 ./build/app/edf_test.o
+                0x000000004000177c        0x0 ./build/app/edf_test.o
 
-.data           0x000000004000173c      0x3f4
-                0x000000004000173c                _rodata = .
+.data           0x000000004000177c      0x3b4
+                0x000000004000177c                _rodata = .
  *(.rdata)
  *(.rodata)
  *(.rodata.*)
  .rodata.dummy_handler.str1.4
-                0x000000004000173c        0x5 ./build/target/libucxos.a(interrupt.o)
- *fill*         0x0000000040001741        0x3 
+                0x000000004000177c        0x5 ./build/target/libucxos.a(interrupt.o)
+ *fill*         0x0000000040001781        0x3 
  .rodata.irq0_handler.str1.4
-                0x0000000040001744       0x25 ./build/target/libucxos.a(interrupt.o)
- *fill*         0x0000000040001769        0x3 
+                0x0000000040001784       0x25 ./build/target/libucxos.a(interrupt.o)
+ *fill*         0x00000000400017a9        0x3 
  .rodata.irq0_handler
-                0x000000004000176c       0x84 ./build/target/libucxos.a(interrupt.o)
+                0x00000000400017ac       0x84 ./build/target/libucxos.a(interrupt.o)
  .rodata.ucx_vsprintf.str1.4
-                0x00000000400017f0       0x19 ./build/target/libucxos.a(libc.o)
- *fill*         0x0000000040001809        0x3 
+                0x0000000040001830       0x19 ./build/target/libucxos.a(libc.o)
+ *fill*         0x0000000040001849        0x3 
  .rodata.ucx_vsprintf
-                0x000000004000180c       0x84 ./build/target/libucxos.a(libc.o)
+                0x000000004000184c       0x84 ./build/target/libucxos.a(libc.o)
  .rodata.main.str1.4
-                0x0000000040001890       0x44 ./build/target/libucxos.a(main.o)
+                0x00000000400018d0       0x44 ./build/target/libucxos.a(main.o)
  .rodata.krnl_stack_check.str1.4
-                0x00000000400018d4       0x33 ./build/target/libucxos.a(ucx.o)
- *fill*         0x0000000040001907        0x1 
+                0x0000000040001914       0x33 ./build/target/libucxos.a(ucx.o)
+ *fill*         0x0000000040001947        0x1 
  .rodata.show_stats.str1.4
-                0x0000000040001908       0xcd ./build/target/libucxos.a(ucx.o)
- *fill*         0x00000000400019d5        0x3 
+                0x0000000040001948       0x98 ./build/target/libucxos.a(ucx.o)
+                                         0xce (size before relaxing)
  .rodata.decrease_counters.str1.4
-                0x00000000400019d8       0x3e ./build/target/libucxos.a(ucx.o)
- *fill*         0x0000000040001a16        0x2 
+                0x00000000400019e0       0x3e ./build/target/libucxos.a(ucx.o)
+ *fill*         0x0000000040001a1e        0x2 
  .rodata.krnl_schedule_edf.str1.4
-                0x0000000040001a18       0x25 ./build/target/libucxos.a(ucx.o)
- *fill*         0x0000000040001a3d        0x3 
+                0x0000000040001a20       0x25 ./build/target/libucxos.a(ucx.o)
+ *fill*         0x0000000040001a45        0x3 
  .rodata.krnl_dispatcher.str1.4
-                0x0000000040001a40       0x19 ./build/target/libucxos.a(ucx.o)
- *fill*         0x0000000040001a59        0x3 
+                0x0000000040001a48       0x19 ./build/target/libucxos.a(ucx.o)
+ *fill*         0x0000000040001a61        0x3 
  .rodata.ucx_task_add_periodic.str1.4
-                0x0000000040001a5c       0x51 ./build/target/libucxos.a(ucx.o)
-                0x0000000040001aad                _erodata = .
-                0x0000000040001aad                _data = .
+                0x0000000040001a64       0x51 ./build/target/libucxos.a(ucx.o)
+                0x0000000040001ab5                _erodata = .
+                0x0000000040001ab5                _data = .
  *(.data)
  *(.data.*)
- *fill*         0x0000000040001aad        0x3 
+ *fill*         0x0000000040001ab5        0x3 
  .data.gpio_vector
-                0x0000000040001ab0       0x10 ./build/target/libucxos.a(interrupt.o)
-                0x0000000040001ab0                gpio_vector
+                0x0000000040001ab8       0x10 ./build/target/libucxos.a(interrupt.o)
+                0x0000000040001ab8                gpio_vector
  .data.irq_vector
-                0x0000000040001ac0       0x20 ./build/target/libucxos.a(interrupt.o)
-                0x0000000040001ac0                irq_vector
+                0x0000000040001ac8       0x20 ./build/target/libucxos.a(interrupt.o)
+                0x0000000040001ac8                irq_vector
  .data.timer_vector
-                0x0000000040001ae0       0x40 ./build/target/libucxos.a(interrupt.o)
-                0x0000000040001ae0                timer_vector
-                0x0000000040002320                _gp = (. + 0x800)
+                0x0000000040001ae8       0x40 ./build/target/libucxos.a(interrupt.o)
+                0x0000000040001ae8                timer_vector
+                0x0000000040002328                _gp = (. + 0x800)
  *(.sdata)
  *(.sdata.*)
- .sdata.kcb_p   0x0000000040001b20        0x4 ./build/target/libucxos.a(ucx.o)
-                0x0000000040001b20                kcb_p
+ .sdata.kcb_p   0x0000000040001b28        0x4 ./build/target/libucxos.a(ucx.o)
+                0x0000000040001b28                kcb_p
                 0x0000000040001b30                . = ALIGN (0x10)
- *fill*         0x0000000040001b24        0xc 
+ *fill*         0x0000000040001b2c        0x4 
                 0x0000000040001b30                _edata = .
 
 .bss            0x0000000040001b30       0x6c
