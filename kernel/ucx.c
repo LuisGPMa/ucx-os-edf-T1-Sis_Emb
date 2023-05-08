@@ -56,7 +56,7 @@ void show_stats()
 	printf("EXECUTION STATS AT CYCLE %d\n____________________________________________________\n", kcb_p->cycle_counter);
 	do {
 		if (curr_task_p->deadline > 0) {
-			printf("task %d \n\tdeadline misses: %d\n\tperiods executed: %d\n\tjobs executed\n", curr_task_p->id, curr_task_p->deadline_misses, curr_task_p->executed_periods, curr_task_p->executed_jobs);
+			printf("task %d \n\tdeadline misses: %d\n\tperiods executed: %d\n\tjobs executed: %d\n", curr_task_p->id, curr_task_p->deadline_misses, curr_task_p->executed_periods, curr_task_p->executed_jobs);
 		}
 		curr_task_p = curr_task_p->tcb_next;
 	} while(curr_task_p->id != kcb_p->tcb_first->id);
@@ -110,7 +110,7 @@ int32_t krnl_schedule_edf(void)
 			kcb_p->tcb_p->state = TASK_READY;		
 	}
 	decrease_counters();
-	if(kcb_p->cycle_counter%50==0){
+	if(kcb_p->cycle_counter%12==0){
 		show_stats();
 	}
 

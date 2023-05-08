@@ -51,23 +51,23 @@ void task_be(){
 
 int32_t app_main(void)
 {
-    uint16_t period_0 = 8;
-    uint16_t period_1 = 7;
+    uint16_t period_0 = 2;
+    uint16_t period_1 = 4;
     uint16_t period_2 = 6;
-    uint16_t period_3 = 6;
-    uint16_t period_4 = 5;
+    uint16_t period_3 = 4;
+    uint16_t period_4 = 2;
 
     uint16_t capacity_0 = 1;
     uint16_t capacity_1 = 2;
-    uint16_t capacity_2 = 3;
+    uint16_t capacity_2 = 4;
     uint16_t capacity_3 = 2;
     uint16_t capacity_4 = 1;
 
-    uint16_t deadline_0 = 8;
-    uint16_t deadline_1 = 7;
+    uint16_t deadline_0 = 2;
+    uint16_t deadline_1 = 4;
     uint16_t deadline_2 = 6;
-    uint16_t deadline_3 = 6;
-    uint16_t deadline_4 = 5;
+    uint16_t deadline_3 = 4;
+    uint16_t deadline_4 = 2;
 
     
 	ucx_task_add_periodic(task0_periodic, DEFAULT_STACK_SIZE, period_0, capacity_0, deadline_0);
